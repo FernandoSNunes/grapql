@@ -2,10 +2,10 @@ const Question = require("../models/Question");
 
 const questionResolver = {
   Query: {
-    questions() {
+    questions: async () => {
       return Question.find();
     },
-    question(_, { id }) {
+    question: async (_, { id }) => {
       return Question.findById(id);
     },
   },
