@@ -10,3 +10,6 @@ A pasta Old-GraphQL_server contem um servidor graphql sem integração com um ba
 
 
 Para iniciar o frontend acesse my-app e use yarn start. O acesso será pelo http://localhost:3000/ que deverá abrir automaticamente ao iniciar o servidor.
+
+
+Apenas uma querry esta funcional (a que puxa as questoes do banco). 
