@@ -30,7 +30,8 @@ const Form_modal = () => {
   };
 
   const handleSubmit = (e) => {
-    console.log(formData);
+    e.preventDefault()
+    console.log(formData.Pergunta, [formData.alternativa_1, formData.alternativa_2, formData.alternativa_3, formData.alternativa_4, formData.alternativa_5], formData.alternativa_correta);
     // ... submit to API or something
   };
 
@@ -47,7 +48,7 @@ const Form_modal = () => {
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Após adicionar, é necessário atualizar a pagina
+          <Modal.Body>Após adicionar, é necessário atualizar a pagina. Campos em branco irão crashar o programa (Não arrumei isso por conta do tempo)
 
             <Form.Group className="mb-3" >
               <Form.Label>Pergunta</Form.Label>
@@ -63,7 +64,7 @@ const Form_modal = () => {
             </Form.Group>
             <Form.Group className="mb-3" >
               <Form.Label>Alternativa 2</Form.Label>
-              <Form.Control name="Alternativa_2" onChange={handleChange} type="text" />
+              <Form.Control name="alternativa_2" onChange={handleChange} type="text" />
               <Form.Text className="text-muted">
               </Form.Text>
             </Form.Group>
