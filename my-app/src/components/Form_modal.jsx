@@ -12,11 +12,10 @@ const initialFormData = Object.freeze({
 });
 
 
-const Form_modal = () => {
-  const [show, setShow] = useState(false);
+const Form_modal = ({ show, setShow }) => {
+
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const [formData, updateFormData] = React.useState(initialFormData);
 
@@ -30,7 +29,7 @@ const Form_modal = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    //e.preventDefault()
     console.log(formData.Pergunta, [formData.alternativa_1, formData.alternativa_2, formData.alternativa_3, formData.alternativa_4, formData.alternativa_5], formData.alternativa_correta);
     // ... submit to API or something
   };
@@ -38,11 +37,6 @@ const Form_modal = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-
       <Form>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>

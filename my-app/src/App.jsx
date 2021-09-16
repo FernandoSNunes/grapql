@@ -6,6 +6,7 @@ import Nav_bar from './components/Nav_bar';
 import Form_modal from './components/Form_modal';
 
 const App = () => {
+
   return (
     <div className="container-fluid">
       <Top_bar />

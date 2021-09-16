@@ -1,12 +1,14 @@
-import React, { } from "react";
+import React, { useState } from "react";
 import Form_modal from "./Form_modal";
 
 const Nav_bar = () => {
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
   return (
     <>
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg row">
 
-        <a className="navbar-brand" href="#">Adicionar Pergunta</a>
+        <button className="btn btn-primary" onClick={handleShow} >Adicionar Pergunta</button>
 
         <div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
 
@@ -16,7 +18,7 @@ const Nav_bar = () => {
           </form>
         </div>
       </nav>
-      <Form_modal />
+      <Form_modal show={show} setShow={setShow} />
     </>
   )
 
