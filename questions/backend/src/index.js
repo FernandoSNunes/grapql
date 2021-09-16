@@ -3,14 +3,10 @@ const mongoose = require("mongoose");
 const { ApolloServer } = require("apollo-server");
 const typeDefs = require("./typeDefs");
 const resolvers = require("./resolvers");
-// Database
-const db = {
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  pass: process.env.DB_PASS,
-  name: process.env.DB_NAME,
-};
+
+// Database - altere o link do servidor para usar outro
 const dbUri = `mongodb+srv://fernando:nunes@cluster0.xrmxt.mongodb.net/teste?retryWrites=true&w=majority`;
+
 const dbOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,

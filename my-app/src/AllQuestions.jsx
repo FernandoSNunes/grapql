@@ -6,6 +6,7 @@ import {
   usePreloadedQuery,
 } from 'react-relay/hooks';
 import RelayEnvironment from './RelayEnvironment';
+import "./App.css"
 
 const { Suspense } = React;
 
@@ -43,22 +44,31 @@ function Call_graphql_aux(props) {
 
   return (
     <div >
-      <body>
+
+
+
+      <div className="row ">
 
         {data?.questions?.map((question, index) =>
-          <div className="card-body Caixas">
-            <p className="App" key={index}>{question.pergunta}</p>
-            <div className="Question">
-              <p > {1 === question.alternativa_correta ? ("->") : ("")} {question.alternativas[0]}</p>
-              <p > {2 === question.alternativa_correta ? ("->") : ("")} {question.alternativas[1]}</p>
-              <p > {3 === question.alternativa_correta ? ("->") : ("")} {question.alternativas[2]}</p>
-              <p > {4 === question.alternativa_correta ? ("->") : ("")} {question.alternativas[3]}</p>
-              <p > {5 === question.alternativa_correta ? ("->") : ("")} {question.alternativas[4]}</p>
+          <div className="col-sm-6">
+            <div className="card Caixas shadow bg-transparent" >
+
+              <div className="card-body " >
+                <p className="App card-title" key={index}>{question.pergunta}</p>
+                <div className="Question card-text">
+
+                  <p >  {question.alternativas[0]} {1 === question.alternativa_correta ? ("<-") : ("")}</p>
+                  <p >  {question.alternativas[1]} {2 === question.alternativa_correta ? ("<-") : ("")}</p>
+                  <p >  {question.alternativas[2]} {3 === question.alternativa_correta ? ("<-") : ("")}</p>
+                  <p >  {question.alternativas[3]} {4 === question.alternativa_correta ? ("<-") : ("")}</p>
+                  <p >  {question.alternativas[4]} {5 === question.alternativa_correta ? ("<-") : ("")}</p>
+                </div>
+              </div>
             </div>
           </div>
         )}
 
-      </body>
+      </div>
     </div>
   );
 }
