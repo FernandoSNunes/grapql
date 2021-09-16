@@ -13,4 +13,4 @@ Para iniciar o frontend acesse my-app e use yarn start. O acesso será pelo http
 
 
 Apenas uma querry esta funcional (a que puxa as questoes do banco).
-Criar uma questão pelo frontend apenas retorna os valores que seriam passados à mutation. Para adicionar uma nova de verdade é necessario acessar o servidor pelo http://localhost:4000/ . Não tive tempo para terminar a implementação
+Criar uma questão pelo frontend apenas imprime no terminal os valores que seriam passados à mutation. Para adicionar uma nova de verdade é necessario acessar o servidor pelo http://localhost:4000/ . Não tive tempo para terminar a implementação
