@@ -4,13 +4,27 @@ directive @specifiedBy(
   url: String!
 ) on SCALAR
 
-type bank {
+type Mutation {
+  createQuestion(question: QuestionInput): Question
+  updateQuestion(id: String, question: QuestionInput): Question
+  deleteQuestion(id: String): Question
+}
+
+type Query {
+  questions: [Question]
+  question(id: ID!): Question
+}
+
+type Question {
+  id: ID!
   pergunta: String
   alternativas: [String]
   alternativa_correta: Int
 }
 
-type Query {
-  banks: [bank]
+input QuestionInput {
+  pergunta: String
+  alternativas: [String]
+  alternativa_correta: Int
 }
 

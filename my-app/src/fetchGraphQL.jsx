@@ -8,13 +8,15 @@ async function fetchGraphQL(text, variables) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      query: ` {
-        banks {
+      query: `
+      query questions {
+        questions {
+          id
+          pergunta
           alternativas
+          alternativa_correta
         }
       }
-      
-          
         `,
     }),
     // Get the response as JSON

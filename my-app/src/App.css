@@ -13,15 +13,28 @@
   }
 }
 
-.App-header {
+.Flex{
+  flex: content;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.Questions {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  border: "25px solid #61dafb";
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.Caixas{
+  background-color: antiquewhite;
+  border-radius: 52px;
+  padding: 25px;
+  margin: 20px;
 }
 
 .App-link {
