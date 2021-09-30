@@ -1,5 +1,6 @@
 import React from 'react';
 import "./App.css"
+import QuestionListPage from './components/QuestionListPage';
 import Top_bar from './components/Top_bar'
 import AllQuestions from './AllQuestions';
 import Nav_bar from './components/Nav_bar';
@@ -9,9 +10,10 @@ const App = () => {
 
   return (
     <div className="container-fluid">
-      <Top_bar />
+      {/* <Top_bar />
       <Nav_bar />
-      <AllQuestions />
+      <AllQuestions /> */}
+      <QuestionListPage />
     </div>
   )
 }
