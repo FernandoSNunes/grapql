@@ -9,18 +9,18 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type Question_question$ref: FragmentReference;
-declare export opaque type Question_question$fragmentType: Question_question$ref;
-export type Question_question = {|
+declare export opaque type Question_questions$ref: FragmentReference;
+declare export opaque type Question_questions$fragmentType: Question_questions$ref;
+export type Question_questions = {|
   +id: string,
   +pergunta: ?string,
   +alternativa_correta: ?number,
-  +$refType: Question_question$ref,
+  +$refType: Question_questions$ref,
 |};
-export type Question_question$data = Question_question;
-export type Question_question$key = {
-  +$data?: Question_question$data,
-  +$fragmentRefs: Question_question$ref,
+export type Question_questions$data = Question_questions;
+export type Question_questions$key = {
+  +$data?: Question_questions$data,
+  +$fragmentRefs: Question_questions$ref,
   ...
 };
 */
@@ -30,7 +30,7 @@ const node/*: ReaderFragment*/ = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "Question_question",
+  "name": "Question_questions",
   "selections": [
     {
       "alias": null,
@@ -58,6 +58,6 @@ const node/*: ReaderFragment*/ = {
   "abstractKey": null
 };
 // prettier-ignore
-(node/*: any*/).hash = '1cff538f435edfe70f0ea029b524bee3';
+(node/*: any*/).hash = 'd345ba933feed7434537779a691c23d5';
 
 module.exports = node;

@@ -1,31 +1,32 @@
 import React, { Component } from 'react'
 import {
-  createFragmentContainer,
-  graphql
+  createFragmentContainer
 } from 'react-relay'
+
+import graphql from 'babel-plugin-relay/macro';
 
 class Question extends Component {
 
   render() {
     return (
       <div>
-        <div>{this.props.questions.pergunta} ({this.props.questions.alternativa_correta})</div>
+        <div>{this.props.questions} (aaaa) </div>
       </div>
     )
   }
 
-  _voteForQuestion = async () => {
-    // ... you'll implement this in chapter 6  
-  }
 
 }
 
-export default createFragmentContainer(Question, graphql`
+export default createFragmentContainer(Question, {
+  question: graphql`
 
-  fragment Question_question on Question{
+  fragment Question_questions on Question{
     id
     pergunta
     alternativa_correta
   }
 
-`)
+`
+}
+)
