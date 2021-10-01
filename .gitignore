@@ -1,2 +1,6 @@
+my-app\node_modules
+questions/backend\node_modules
+Old-GraphQL_server\node_modules
 my-app/node_modules
 questions/backend/node_modules
+Old-GraphQL_server/node_modules
