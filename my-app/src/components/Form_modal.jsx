@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap"
+import CreateQuestion from "./CreateQuestion.jsx";
+import createQuestionMutation from "./mutations/CreateQuestionMutation.jsx"
 
 const initialFormData = Object.freeze({
   Pergunta: "",
@@ -10,6 +12,8 @@ const initialFormData = Object.freeze({
   alternativa_5: "",
   alternativa_correta: 0
 });
+
+let dados = [];
 
 
 const Form_modal = ({ show, setShow }) => {
@@ -30,7 +34,9 @@ const Form_modal = ({ show, setShow }) => {
 
   const handleSubmit = (e) => {
     //e.preventDefault()
-    console.log(formData.Pergunta, [formData.alternativa_1, formData.alternativa_2, formData.alternativa_3, formData.alternativa_4, formData.alternativa_5], formData.alternativa_correta);
+    dados = [formData.Pergunta, [formData.alternativa_1, formData.alternativa_2, formData.alternativa_3, formData.alternativa_4, formData.alternativa_5], formData.alternativa_correta];
+    //console.log(formData.Pergunta, [formData.alternativa_1, formData.alternativa_2, formData.alternativa_3, formData.alternativa_4, formData.alternativa_5], formData.alternativa_correta);
+    createQuestionMutation(formData.Pergunta, [formData.alternativa_1, formData.alternativa_2, formData.alternativa_3, formData.alternativa_4, formData.alternativa_5], parseInt(formData.alternativa_correta), () => console.log(`mutation complete`))
     // ... submit to API or something
   };
 
@@ -89,7 +95,6 @@ const Form_modal = ({ show, setShow }) => {
               <option value="4">4</option>
               <option value="5">5</option>
             </Form.Select>
-
 
 
           </Modal.Body>

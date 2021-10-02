@@ -10,10 +10,10 @@ const App = () => {
 
   return (
     <div className="container-fluid">
-      {/* <Top_bar />
+      <Top_bar />
       <Nav_bar />
-      <AllQuestions /> */}
-      <QuestionListPage />
+      <AllQuestions />
+      {/* <QuestionListPage /> */}
     </div>
   )
 }
