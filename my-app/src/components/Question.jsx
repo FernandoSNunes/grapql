@@ -10,7 +10,7 @@ class Question extends Component {
   render() {
     return (
       <div>
-        <div>{this.props.questions} (aaaa) </div>
+        <div>{this.props.question} (aaaa) </div>
       </div>
     )
   }
@@ -21,7 +21,7 @@ class Question extends Component {
 export default createFragmentContainer(Question, {
   question: graphql`
 
-  fragment Question_questions on Question{
+  fragment Question_question on Question{
     id
     pergunta
     alternativa_correta

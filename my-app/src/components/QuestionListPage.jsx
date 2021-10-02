@@ -11,7 +11,7 @@ const QuestionListPageQuery = graphql`
   query QuestionListPageQuery{
     questions{
 
-      ...Question_questions
+      ...Question_question
     }
   }
 `
@@ -28,7 +28,7 @@ class QuestionListPage extends Component {
             if (error) {
               return <div>{error.message}</div>
             } else if (props) {
-              return <Question questions={this.props.questions} />
+              return <Question question={this.props.question} />
             }
             return <div>Loading</div>
           }}
