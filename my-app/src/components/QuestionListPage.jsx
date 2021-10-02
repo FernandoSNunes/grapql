@@ -10,6 +10,8 @@ import Question from './Question'
 const QuestionListPageQuery = graphql`
   query QuestionListPageQuery{
     questions{
+      id
+      pergunta
 
       ...Question_question
     }
@@ -19,6 +21,8 @@ const QuestionListPageQuery = graphql`
 class QuestionListPage extends Component {
 
   render() {
+    console.log("questionPage")
+    console.log(this.props)
     return (
       <div>
         <QueryRenderer
@@ -28,7 +32,10 @@ class QuestionListPage extends Component {
             if (error) {
               return <div>{error.message}</div>
             } else if (props) {
-              return <Question question={this.props.question} />
+              return (
+
+                <Question questions={this.props.questions} />
+              )
             }
             return <div>Loading</div>
           }}

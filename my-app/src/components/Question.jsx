@@ -8,6 +8,9 @@ import graphql from 'babel-plugin-relay/macro';
 class Question extends Component {
 
   render() {
+
+    console.log("question ")
+    console.log(this.props)
     return (
       <div>
         <div>{this.props.question} (aaaa) </div>
