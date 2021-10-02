@@ -14,6 +14,7 @@ export type QuestionListPageQueryResponse = {|
   +questions: ?$ReadOnlyArray<?{|
     +id: string,
     +pergunta: ?string,
+    +alternativas: ?$ReadOnlyArray<?string>,
     +$fragmentRefs: Question_question$ref,
   |}>
 |};
@@ -29,6 +30,7 @@ query QuestionListPageQuery {
   questions {
     id
     pergunta
+    alternativas
     ...Question_question
   }
 }
@@ -54,6 +56,13 @@ v1 = {
   "kind": "ScalarField",
   "name": "pergunta",
   "storageKey": null
+},
+v2 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "alternativas",
+  "storageKey": null
 };
 return {
   "fragment": {
@@ -72,6 +81,7 @@ return {
         "selections": [
           (v0/*: any*/),
           (v1/*: any*/),
+          (v2/*: any*/),
           {
             "args": null,
             "kind": "FragmentSpread",
@@ -100,6 +110,7 @@ return {
         "selections": [
           (v0/*: any*/),
           (v1/*: any*/),
+          (v2/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -113,16 +124,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "794fb5a23217225dc82b3c312565b28c",
+    "cacheID": "afdf6683036ac4851eb8e350d46e0974",
     "id": null,
     "metadata": {},
     "name": "QuestionListPageQuery",
     "operationKind": "query",
-    "text": "query QuestionListPageQuery {\n  questions {\n    id\n    pergunta\n    ...Question_question\n  }\n}\n\nfragment Question_question on Question {\n  id\n  pergunta\n  alternativa_correta\n}\n"
+    "text": "query QuestionListPageQuery {\n  questions {\n    id\n    pergunta\n    alternativas\n    ...Question_question\n  }\n}\n\nfragment Question_question on Question {\n  id\n  pergunta\n  alternativa_correta\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '4750258b81e4b14b89b5ee24860762ce';
+(node/*: any*/).hash = 'd147219ce6469071fa6dfd9c2e5f377b';
 
 module.exports = node;

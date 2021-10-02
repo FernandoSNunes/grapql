@@ -4,7 +4,7 @@ import {
 } from 'react-relay'
 
 import graphql from 'babel-plugin-relay/macro';
-import environment from '../Environment'
+import ModernEnvironment from '../ModernEnvironment'
 import Question from './Question'
 
 const QuestionListPageQuery = graphql`
@@ -12,6 +12,7 @@ const QuestionListPageQuery = graphql`
     questions{
       id
       pergunta
+      alternativas
 
       ...Question_question
     }
@@ -26,15 +27,16 @@ class QuestionListPage extends Component {
     return (
       <div>
         <QueryRenderer
-          environment={environment}
+          environment={ModernEnvironment}
           query={QuestionListPageQuery}
           render={({ error, props }) => {
             if (error) {
               return <div>{error.message}</div>
             } else if (props) {
               return (
-
-                <Question questions={this.props.questions} />
+                <>
+                  <Question questions={this.props.questions} />
+                </>
               )
             }
             return <div>Loading</div>
