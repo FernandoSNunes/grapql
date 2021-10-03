@@ -1,27 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Modal, Form } from "react-bootstrap"
-import CreateQuestion from "./CreateQuestion.jsx";
 import createQuestionMutation from "./mutations/CreateQuestionMutation.jsx"
 
-const initialFormData = Object.freeze({
-  Pergunta: "",
-  alternativa_1: "",
-  alternativa_2: "",
-  alternativa_3: "",
-  alternativa_4: "",
-  alternativa_5: "",
-  alternativa_correta: 0
-});
-
-let dados = [];
 
 
-const Form_modal = ({ show, setShow }) => {
+const Form_modal = ({ show, handleClose, formFieldsData }) => {
 
+  const initialFormData = Object.freeze({
+    Pergunta: formFieldsData.pergunta,
+    alternativa_1: "",
+    alternativa_2: "",
+    alternativa_3: "",
+    alternativa_4: "",
+    alternativa_5: "",
+    alternativa_correta: 0
+  });
 
-  const handleClose = () => setShow(false);
+  let dados = [];
 
   const [formData, updateFormData] = React.useState(initialFormData);
+
+
 
   const handleChange = (e) => {
     updateFormData({
@@ -34,9 +33,10 @@ const Form_modal = ({ show, setShow }) => {
 
   const handleSubmit = (e) => {
     //e.preventDefault()
-    dados = [formData.Pergunta, [formData.alternativa_1, formData.alternativa_2, formData.alternativa_3, formData.alternativa_4, formData.alternativa_5], formData.alternativa_correta];
     //console.log(formData.Pergunta, [formData.alternativa_1, formData.alternativa_2, formData.alternativa_3, formData.alternativa_4, formData.alternativa_5], formData.alternativa_correta);
+
     createQuestionMutation(formData.Pergunta, [formData.alternativa_1, formData.alternativa_2, formData.alternativa_3, formData.alternativa_4, formData.alternativa_5], parseInt(formData.alternativa_correta), () => console.log(`mutation complete`))
+
     // ... submit to API or something
   };
 
@@ -46,13 +46,14 @@ const Form_modal = ({ show, setShow }) => {
       <Form>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            {formFieldsData.Pergunta}
+            <Modal.Title name="title" cont>  {initialFormData.Pergunta} </Modal.Title>
           </Modal.Header>
           <Modal.Body>Após adicionar, é necessário atualizar a pagina. Campos em branco irão crashar o programa (Não arrumei isso por conta do tempo)
 
             <Form.Group className="mb-3" >
               <Form.Label>Pergunta</Form.Label>
-              <Form.Control size="lg" name="Pergunta" onChange={handleChange} type="text" />
+              <Form.Control size="lg" name="Pergunta" on onChange={handleChange} type="text" />
               <Form.Text className="text-muted">
               </Form.Text>
             </Form.Group>

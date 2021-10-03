@@ -7,6 +7,8 @@ import {
 } from 'react-relay/hooks';
 import RelayEnvironment from './RelayEnvironment';
 import "./App.css"
+import DeleteQuestionMutation from './components/mutations/DeleteQuestionMutation';
+
 
 const { Suspense } = React;
 
@@ -38,15 +40,21 @@ const preloadedQuery = loadQuery(RelayEnvironment, RepositoryNameQuery, {
 // - If the query failed, it throws the failure error. For simplicity we aren't
 //   handling the failure case here.
 
+
+
 function Call_graphql_aux(props) {
+
+
+  const remover = (id) => {
+
+    DeleteQuestionMutation(id)
+
+  };
+
   const data = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery);
-  //useEffect(() => { console.log(data.questions) }, [data])
 
   return (
     <div >
-
-
-
       <div className="row ">
 
         {data?.questions?.map((question, index) =>
@@ -54,14 +62,16 @@ function Call_graphql_aux(props) {
             <div className="card Caixas shadow bg-transparent" >
 
               <div className="card-body " >
+
+                <button className="btn btn-primary BotaoEditar" onClick={() => props.handleShow(question.id)} >Editar</button>
+                <button className="btn btn-primary BotaoEditar" onClick={() => remover(question.id)} >Remover</button>
                 <p className="App card-title" key={index}>{question.pergunta}</p>
                 <div className="Question card-text">
-
-                  <p >  {question.alternativas[0]} {1 === question.alternativa_correta ? ("<-") : ("")}</p>
-                  <p >  {question.alternativas[1]} {2 === question.alternativa_correta ? ("<-") : ("")}</p>
-                  <p >  {question.alternativas[2]} {3 === question.alternativa_correta ? ("<-") : ("")}</p>
-                  <p >  {question.alternativas[3]} {4 === question.alternativa_correta ? ("<-") : ("")}</p>
-                  <p >  {question.alternativas[4]} {5 === question.alternativa_correta ? ("<-") : ("")}</p>
+                  <p > a)  {question.alternativas[0]} {1 === question.alternativa_correta ? ("<-") : ("")}</p>
+                  <p > b)  {question.alternativas[1]} {2 === question.alternativa_correta ? ("<-") : ("")}</p>
+                  <p > c)  {question.alternativas[2]} {3 === question.alternativa_correta ? ("<-") : ("")}</p>
+                  <p > d)  {question.alternativas[3]} {4 === question.alternativa_correta ? ("<-") : ("")}</p>
+                  <p > e)  {question.alternativas[4]} {5 === question.alternativa_correta ? ("<-") : ("")}</p>
                 </div>
               </div>
             </div>
@@ -79,13 +89,18 @@ function Call_graphql_aux(props) {
 //   Relay Environment instance
 // - <Suspense> specifies a fallback in case a child suspends.
 
-function AllQuestions(props) {
-  return (
-    <RelayEnvironmentProvider environment={RelayEnvironment}>
-      <Suspense fallback={'Loading...'}>
-        <Call_graphql_aux preloadedQuery={preloadedQuery} />
-      </Suspense>
-    </RelayEnvironmentProvider>
+function AllQuestions(props) {   //separar o show do props para manter
+  return (                                                      // escopos (sem efeito pratico)
+    <>
+
+      <RelayEnvironmentProvider environment={RelayEnvironment}>
+        <Suspense fallback={'Loading...'}>
+          <Call_graphql_aux
+
+            preloadedQuery={preloadedQuery} handleShow={props.handleShow} handleForm={props.handleForm} />
+        </Suspense>
+      </RelayEnvironmentProvider>
+    </>
   );
 }
 

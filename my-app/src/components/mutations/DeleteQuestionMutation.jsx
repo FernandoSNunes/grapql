@@ -7,24 +7,18 @@ import graphql from 'babel-plugin-relay/macro';
 
 // 2
 const mutation = graphql`
-mutation CreateQuestionMutation($input: QuestionInput!) {
-    createQuestion(question: $input) {
-      pergunta
-      alternativas
-      alternativa_correta
+mutation DeleteQuestionMutation($id : String) {
+  deleteQuestion(id: $id) {
+    id
     }
   }
 `
 
 // 3
-export default (pergunta, alternativas, alternativa_correta, callback) => {
+export default (id) => {
   // 4
   const variables = {
-    input: {
-      pergunta,
-      alternativas,
-      alternativa_correta
-    },
+    id: id,
   }
 
   // 5
@@ -35,9 +29,10 @@ export default (pergunta, alternativas, alternativa_correta, callback) => {
       variables,
       // 6
       onCompleted: () => {
-        window.location.reload();
-        callback()
+        window.location.reload()
       },
+      //estou fazendo uma implementacao simples entao nao fiz o updater, mas entendi a ideia
+      //interressante ter o optmisticUpdater para usar enquanto nao se sabe se a mutation funcionou 
       onError: err => console.error(err),
     },
   )
