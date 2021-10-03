@@ -51,6 +51,7 @@ function Call_graphql_aux(props) {
 
   };
 
+  //arruma as variaveis para edicao de um
   const editar = (question) => {
     props.handleformFieldsData(
       "Editar questão",
@@ -68,14 +69,15 @@ function Call_graphql_aux(props) {
       <div className="row ">
 
         {data?.questions?.map((question, index) =>
-          <div className="col-sm-6">
+
+          <div className="col-sm-6 Questao">
             <div className="card Caixas shadow bg-transparent" >
 
               <div className="card-body " >
 
                 <button className="btn btn-primary BotaoEditar" onClick={() => { editar(question); props.handleShow(question.id); }} >Editar</button>
                 <button className="btn btn-primary BotaoEditar" onClick={() => remover(question.id)} >Remover</button>
-                <p className="App card-title" key={index}>{question.pergunta}</p>
+                <p className="App card-title TextoPergunta" key={index}>{question.pergunta}</p>
                 <div className="Question card-text">
                   <p > a)  {question.alternativas[0]} {1 === question.alternativa_correta ? ("<-") : ("")}</p>
                   <p > b)  {question.alternativas[1]} {2 === question.alternativa_correta ? ("<-") : ("")}</p>
@@ -107,7 +109,7 @@ function AllQuestions(props) {
         <Suspense fallback={'Loading...'}>
           <Call_graphql_aux
 
-            preloadedQuery={preloadedQuery} handleShow={props.handleShow} handleformFieldsData={props.handleformFieldsData} />
+            preloadedQuery={preloadedQuery} handleShow={props.handleShow} filter={props.filter} handleformFieldsData={props.handleformFieldsData} />
         </Suspense>
       </RelayEnvironmentProvider>
     </>

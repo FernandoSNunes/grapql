@@ -15,10 +15,7 @@ const Form_modal = ({ show, handleClose, formFieldsData }) => {
     alternativa_4: "",
     alternativa_5: "",
     alternativa_correta: 0
-
   });
-
-  let dados = [];
 
   const [formData, updateFormData] = React.useState(initialFormData);
 
@@ -75,42 +72,42 @@ const Form_modal = ({ show, handleClose, formFieldsData }) => {
 
             <Form.Group className="mb-3" >
               <Form.Label>Pergunta</Form.Label>
-              <Form.Control placeholder={formFieldsData.pergunta} size="lg" name="Pergunta" on onChange={handleChange} type="text" />
+              <Form.Control defaultValue={formFieldsData.pergunta} size="lg" name="Pergunta" on onChange={handleChange} type="text" />
               <Form.Text className="text-muted">
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" >
               <Form.Label>Alternativa 1</Form.Label>
-              <Form.Control placeholder={formFieldsData.alternativas[0]} name="alternativa_1" onChange={handleChange} type="text" />
+              <Form.Control defaultValue={formFieldsData.alternativas[0]} name="alternativa_1" onChange={handleChange} type="text" />
               <Form.Text className="text-muted">
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" >
               <Form.Label>Alternativa 2</Form.Label>
-              <Form.Control placeholder={formFieldsData.alternativas[1]} name="alternativa_2" onChange={handleChange} type="text" />
+              <Form.Control defaultValue={formFieldsData.alternativas[1]} name="alternativa_2" onChange={handleChange} type="text" />
               <Form.Text className="text-muted">
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" >
               <Form.Label>Alternativa 3</Form.Label>
-              <Form.Control placeholder={formFieldsData.alternativas[2]} name="alternativa_3" onChange={handleChange} type="text" />
+              <Form.Control defaultValue={formFieldsData.alternativas[2]} name="alternativa_3" onChange={handleChange} type="text" />
               <Form.Text className="text-muted">
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" >
               <Form.Label>Alternativa 4</Form.Label>
-              <Form.Control placeholder={formFieldsData.alternativas[3]} name="alternativa_4" onChange={handleChange} type="text" />
+              <Form.Control defaultValue={formFieldsData.alternativas[3]} name="alternativa_4" onChange={handleChange} type="text" />
               <Form.Text className="text-muted">
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" >
               <Form.Label>Alternativa 5</Form.Label>
-              <Form.Control placeholder={formFieldsData.alternativas[4]} name="alternativa_5" onChange={handleChange} type="text" />
+              <Form.Control defaultValue={formFieldsData.alternativas[4]} name="alternativa_5" onChange={handleChange} type="text" />
               <Form.Text className="text-muted">
               </Form.Text>
             </Form.Group>
 
-            <Form.Select placeholder={formFieldsData.alternativa_correta} aria-label="Default select example" name="alternativa_correta" onChange={handleChange} defaultValue="Choose...">
+            <Form.Select defaultValue={formFieldsData.alternativa_correta} aria-label="Default select example" name="alternativa_correta" onChange={handleChange} defaultValue="Choose...">
               <option>Alternativa correta</option>
               <option value="1">1</option>
               <option value="2">2</option>

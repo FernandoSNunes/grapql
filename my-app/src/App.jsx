@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css"
-import QuestionListPage from './components/QuestionListPage';
 import Top_bar from './components/Top_bar'
 import AllQuestions from './AllQuestions';
 import Nav_bar from './components/Nav_bar';
-import Form_modal from './components/Form_modal';
 
 
 const App = () => {
@@ -13,6 +11,8 @@ const App = () => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+
+  const [filter, setFilter] = useState("")
 
   //usada para preencher campos do form caso seja o editar
   const [formFieldsData, setformFieldsData] = useState(
@@ -36,10 +36,14 @@ const App = () => {
 
   return (
     < div className="container-fluid" >
+      {/* {filter} */}
       < Top_bar />
-      <Nav_bar show={show} handleShow={handleShow} handleClose={handleClose} formFieldsData={formFieldsData} handleformFieldsData={handleformFieldsData} />
-      <AllQuestions handleShow={handleShow} handleformFieldsData={handleformFieldsData} />
-      {/* <QuestionListPage /> */}
+
+      <Nav_bar show={show} handleShow={handleShow} handleClose={handleClose}
+        formFieldsData={formFieldsData} handleformFieldsData={handleformFieldsData}
+        filter={setFilter} setFilter={setFilter} />
+
+      <AllQuestions handleShow={handleShow} handleformFieldsData={handleformFieldsData} filter={filter} />
     </div >
   )
 }
