@@ -17,12 +17,12 @@ const Form_modal = ({ show, handleClose, formFieldsData }) => {
     alternativa_correta: 0
   });
 
-  const [formData, updateFormData] = React.useState(initialFormData);
+  const [formData, setFormData] = React.useState(initialFormData);
 
 
 
   const handleChange = (e) => {
-    updateFormData({
+    setFormData({
       ...formData,
 
       // Trimming any whitespace
@@ -33,7 +33,7 @@ const Form_modal = ({ show, handleClose, formFieldsData }) => {
   const handleSubmit = (e) => {
     //e.preventDefault()
 
-    if (formFieldsData.id == "") //sem id = novo elemento, garantido na chamada de handleformFieldsData de Nav_bar
+    if (formFieldsData.id == "") //sem id = novo elemento, garantido na chamada de handleFormFieldsData de Nav_bar
       createQuestionMutation(formData.Pergunta, [formData.alternativa_1, formData.alternativa_2, formData.alternativa_3, formData.alternativa_4, formData.alternativa_5], parseInt(formData.alternativa_correta), () => console.log(`mutation complete`))
     else {
       if (formData.Pergunta == "")

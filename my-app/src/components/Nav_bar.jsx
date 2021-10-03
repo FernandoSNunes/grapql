@@ -1,11 +1,11 @@
 import React from "react";
 import Form_modal from "./Form_modal";
 
-const Nav_bar = ({ show, handleClose, handleShow, formFieldsData, handleformFieldsData, setFilter }) => {
+const Nav_bar = ({ show, handleClose, handleShow, formFieldsData, handleFormFieldsData }) => {
 
   //arruma os campos para insercao de um elemento no banco de dados
   const prepararNovo = () => {
-    handleformFieldsData(
+    handleFormFieldsData(
       "Adicionar questão",
       "",
       "",
@@ -14,24 +14,29 @@ const Nav_bar = ({ show, handleClose, handleShow, formFieldsData, handleformFiel
     )
   }
 
-  const [filterData, updateFilterData] = React.useState("");
+  const [filter, setFilter] = React.useState("");
 
 
 
   const handleChange = (e) => {
-    updateFilterData({
-      ...filterData,
+    setFilter(
 
-      // Trimming any whitespace
-      [e.target.name]: e.target.value.trim()
-    });
+      e.target.value.trim()
+    );
   };
 
-  const handleSubmit = () => {
-    let questoes = document.getElementsByClassName("Questoes")
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    let questoes = document.getElementsByClassName("Questao")
     let textos = document.getElementsByClassName("TextoPergunta")
-    for (let i = 0; i < questoes.lenght; i++) {
-      console.log(textos[i].value)
+    console.log(questoes.length)
+    for (let i = 0; i < questoes.length; i++) {
+      console.log(textos[i])
+      if (textos[i].innerHTML.includes(filter)) {
+        questoes[i].style.display = ""
+      }
+      else
+        questoes[i].style.display = "none"
     }
   }
 

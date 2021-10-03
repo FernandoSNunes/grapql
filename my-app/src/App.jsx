@@ -12,10 +12,9 @@ const App = () => {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  const [filter, setFilter] = useState("")
 
   //usada para preencher campos do form caso seja o editar
-  const [formFieldsData, setformFieldsData] = useState(
+  const [formFieldsData, setFormFieldsData] = useState(
     {
       title: "",
       id: "",
@@ -24,7 +23,7 @@ const App = () => {
       alternativa_correta: 0
     }
   )
-  const handleformFieldsData = (title, id, pergunta, alternativas, alternativa_correta) => setformFieldsData(
+  const handleFormFieldsData = (title, id, pergunta, alternativas, alternativa_correta) => setFormFieldsData(
     {
       title: title,
       id: id,
@@ -36,14 +35,13 @@ const App = () => {
 
   return (
     < div className="container-fluid" >
-      {/* {filter} */}
       < Top_bar />
 
       <Nav_bar show={show} handleShow={handleShow} handleClose={handleClose}
-        formFieldsData={formFieldsData} handleformFieldsData={handleformFieldsData}
-        filter={setFilter} setFilter={setFilter} />
+        formFieldsData={formFieldsData} handleFormFieldsData={handleFormFieldsData}
+      />
 
-      <AllQuestions handleShow={handleShow} handleformFieldsData={handleformFieldsData} filter={filter} />
+      <AllQuestions handleShow={handleShow} handleFormFieldsData={handleFormFieldsData} />
     </div >
   )
 }
