@@ -7,7 +7,7 @@ const Nav_bar = ({ show, handleClose, handleShow, formFieldsData, handleformFiel
     handleformFieldsData(
       "Adicionar questão",
       "",
-      "teste",
+      "",
       ["", "", "", "", ""],
       0
     )

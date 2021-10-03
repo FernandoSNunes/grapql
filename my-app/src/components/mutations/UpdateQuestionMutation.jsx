@@ -36,6 +36,7 @@ export default (id, pergunta, alternativas, alternativa_correta, callback) => {
       variables,
       // 6
       onCompleted: () => {
+        window.location.reload()
         callback()
       },
       onError: err => console.error(err),

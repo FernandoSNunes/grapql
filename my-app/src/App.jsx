@@ -19,7 +19,7 @@ const App = () => {
     {
       title: "",
       id: "",
-      pergunta: "teste",
+      pergunta: "",
       alternativas: ["", "", "", "", ""],
       alternativa_correta: 0
     }
@@ -36,8 +36,6 @@ const App = () => {
 
   return (
     < div className="container-fluid" >
-
-      {formFieldsData.pergunta}
       < Top_bar />
       <Nav_bar show={show} handleShow={handleShow} handleClose={handleClose} formFieldsData={formFieldsData} handleformFieldsData={handleformFieldsData} />
       <AllQuestions handleShow={handleShow} handleformFieldsData={handleformFieldsData} />

@@ -51,6 +51,16 @@ function Call_graphql_aux(props) {
 
   };
 
+  const editar = (question) => {
+    props.handleformFieldsData(
+      "Editar questão",
+      question.id,
+      question.pergunta,
+      question.alternativas,
+      question.alternativa_correta
+    )
+  }
+
   const data = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery);
 
   return (
@@ -63,7 +73,7 @@ function Call_graphql_aux(props) {
 
               <div className="card-body " >
 
-                <button className="btn btn-primary BotaoEditar" onClick={() => props.handleShow(question.id)} >Editar</button>
+                <button className="btn btn-primary BotaoEditar" onClick={() => { editar(question); props.handleShow(question.id); }} >Editar</button>
                 <button className="btn btn-primary BotaoEditar" onClick={() => remover(question.id)} >Remover</button>
                 <p className="App card-title" key={index}>{question.pergunta}</p>
                 <div className="Question card-text">
@@ -89,15 +99,15 @@ function Call_graphql_aux(props) {
 //   Relay Environment instance
 // - <Suspense> specifies a fallback in case a child suspends.
 
-function AllQuestions(props) {   //separar o show do props para manter
-  return (                                                      // escopos (sem efeito pratico)
+function AllQuestions(props) {
+  return (
     <>
 
       <RelayEnvironmentProvider environment={RelayEnvironment}>
         <Suspense fallback={'Loading...'}>
           <Call_graphql_aux
 
-            preloadedQuery={preloadedQuery} handleShow={props.handleShow} handleForm={props.handleForm} />
+            preloadedQuery={preloadedQuery} handleShow={props.handleShow} handleformFieldsData={props.handleformFieldsData} />
         </Suspense>
       </RelayEnvironmentProvider>
     </>
