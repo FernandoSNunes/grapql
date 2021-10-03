@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import graphql from 'babel-plugin-relay/macro';
 import {
   RelayEnvironmentProvider,
@@ -42,7 +42,7 @@ const preloadedQuery = loadQuery(RelayEnvironment, RepositoryNameQuery, {
 
 
 
-function Call_graphql_aux(props) {
+function CallGraphqlAux(props) {
 
 
   const remover = (id) => {
@@ -70,7 +70,7 @@ function Call_graphql_aux(props) {
 
         {data?.questions?.map((question, index) =>
 
-          <div className="col-sm-6 Questao">
+          <div className="col-sm-6 Questao" key={index}>
             <div className="card Caixas shadow bg-transparent" >
 
               <div className="card-body " >
@@ -107,8 +107,7 @@ function AllQuestions(props) {
 
       <RelayEnvironmentProvider environment={RelayEnvironment}>
         <Suspense fallback={'Loading...'}>
-          <Call_graphql_aux
-
+          <CallGraphqlAux
             preloadedQuery={preloadedQuery} handleShow={props.handleShow} handleFormFieldsData={props.handleFormFieldsData} />
         </Suspense>
       </RelayEnvironmentProvider>

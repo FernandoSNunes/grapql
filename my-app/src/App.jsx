@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css"
-import Top_bar from './components/Top_bar'
+import TopBar from './components/TopBar'
 import AllQuestions from './AllQuestions';
-import Nav_bar from './components/Nav_bar';
+import NavBar from './components/NavBar';
 
 
 const App = () => {
@@ -35,9 +35,9 @@ const App = () => {
 
   return (
     < div className="container-fluid" >
-      < Top_bar />
+      < TopBar />
 
-      <Nav_bar show={show} handleShow={handleShow} handleClose={handleClose}
+      <NavBar show={show} handleShow={handleShow} handleClose={handleClose}
         formFieldsData={formFieldsData} handleFormFieldsData={handleFormFieldsData}
       />
 

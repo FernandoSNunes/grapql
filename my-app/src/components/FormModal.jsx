@@ -5,7 +5,7 @@ import UpdateQuestionMutation from "./mutations/UpdateQuestionMutation.jsx";
 
 
 
-const Form_modal = ({ show, handleClose, formFieldsData }) => {
+const FormModal = ({ show, handleClose, formFieldsData }) => {
 
   const initialFormData = Object.freeze({
     Pergunta: "",
@@ -33,22 +33,22 @@ const Form_modal = ({ show, handleClose, formFieldsData }) => {
   const handleSubmit = (e) => {
     //e.preventDefault()
 
-    if (formFieldsData.id == "") //sem id = novo elemento, garantido na chamada de handleFormFieldsData de Nav_bar
+    if (formFieldsData.id === "") //sem id = novo elemento, garantido na chamada de handleFormFieldsData de NavBar
       createQuestionMutation(formData.Pergunta, [formData.alternativa_1, formData.alternativa_2, formData.alternativa_3, formData.alternativa_4, formData.alternativa_5], parseInt(formData.alternativa_correta), () => console.log(`mutation complete`))
     else {
-      if (formData.Pergunta == "")
+      if (formData.Pergunta === "")
         formData.Pergunta = formFieldsData.pergunta
-      if (formData.alternativa_1 == "")
+      if (formData.alternativa_1 === "")
         formData.alternativa_1 = formFieldsData.alternativas[0]
-      if (formData.alternativa_2 == "")
+      if (formData.alternativa_2 === "")
         formData.alternativa_2 = formFieldsData.alternativas[1]
-      if (formData.alternativa_3 == "")
+      if (formData.alternativa_3 === "")
         formData.alternativa_3 = formFieldsData.alternativas[2]
-      if (formData.alternativa_4 == "")
+      if (formData.alternativa_4 === "")
         formData.alternativa_4 = formFieldsData.alternativas[3]
-      if (formData.alternativa_5 == "")
+      if (formData.alternativa_5 === "")
         formData.alternativa_5 = formFieldsData.alternativas[4]
-      if (formData.alternativa_correta == "")
+      if (formData.alternativa_correta === "")
         formData.alternativa_correta = formFieldsData.alternativa_correta
 
       UpdateQuestionMutation(formFieldsData.id, formData.Pergunta, [formData.alternativa_1, formData.alternativa_2, formData.alternativa_3, formData.alternativa_4, formData.alternativa_5], parseInt(formData.alternativa_correta), () => console.log(`mutation complete`))
@@ -107,7 +107,7 @@ const Form_modal = ({ show, handleClose, formFieldsData }) => {
               </Form.Text>
             </Form.Group>
 
-            <Form.Select defaultValue={formFieldsData.alternativa_correta} aria-label="Default select example" name="alternativa_correta" onChange={handleChange} defaultValue="Choose...">
+            <Form.Select defaultValue={formFieldsData.alternativa_correta} aria-label="Default select example" name="alternativa_correta" onChange={handleChange}>
               <option>Alternativa correta</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -125,9 +125,6 @@ const Form_modal = ({ show, handleClose, formFieldsData }) => {
             <Button variant="primary" type="submit" onClick={() => { handleSubmit(); handleClose(); }} >
               Submit
             </Button>
-            {/* <Button variant="primary"  onClick={handleClose} >
-              Save Changes
-            </Button> */}
           </Modal.Footer>
         </Modal>
       </Form>
@@ -135,4 +132,4 @@ const Form_modal = ({ show, handleClose, formFieldsData }) => {
   );
 
 }
-export default Form_modal;
+export default FormModal;

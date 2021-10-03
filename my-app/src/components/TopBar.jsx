@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import "../App.css"
 
-const Top_bar = () => {
+const TopBar = () => {
   return (
 
     <div className=" row">
@@ -32,4 +32,4 @@ const Top_bar = () => {
 
 
 
-export default Top_bar
+export default TopBar

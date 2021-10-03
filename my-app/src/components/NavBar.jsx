@@ -1,7 +1,7 @@
 import React from "react";
-import Form_modal from "./Form_modal";
+import FormModal from "./FormModal";
 
-const Nav_bar = ({ show, handleClose, handleShow, formFieldsData, handleFormFieldsData }) => {
+const NavBar = ({ show, handleClose, handleShow, formFieldsData, handleFormFieldsData }) => {
 
   //arruma os campos para insercao de um elemento no banco de dados
   const prepararNovo = () => {
@@ -54,10 +54,10 @@ const Nav_bar = ({ show, handleClose, handleShow, formFieldsData, handleFormFiel
           </form>
         </div>
       </nav>
-      <Form_modal show={show} handleClose={handleClose} formFieldsData={formFieldsData} />
+      <FormModal show={show} handleClose={handleClose} formFieldsData={formFieldsData} />
     </>
   )
 
 }
 
-export default Nav_bar;
+export default NavBar;
